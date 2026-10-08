@@ -1,0 +1,37 @@
+﻿    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    namespace Program16
+    {
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            int? x = null;
+            int? y = null;
+            int? z = 10;
+
+            // 1. null == null → true (по спецификации C#)
+            bool nullEqualsNull = x == y;
+            Console.WriteLine($"null == null = {nullEqualsNull}"); // True
+
+            // 2. null != значение → true
+            bool nullNotEqualsValue = x != z;
+            Console.WriteLine($"null != 10 = {nullNotEqualsValue}"); // True
+
+            // 3. Проверка, есть ли у переменной значение
+            Console.WriteLine($"x.HasValue = {x.HasValue}"); // False
+            Console.WriteLine($"z.HasValue = {z.HasValue}"); // True
+
+            // 4. Безопасное получение значения (или дефолта)
+            int xValue = x ?? 0;      // если x == null, будет 0
+            int zValue = z ?? 0;      // здесь z не null, поэтому будет 10
+
+            Console.WriteLine($"x ?? 0 = {xValue}"); // 0
+            Console.WriteLine($"z ?? 0 = {zValue}"); // 10
+        }
+    }
+    }
